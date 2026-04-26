@@ -61,8 +61,8 @@ All tests are written using **Playwright** and follow structured, real-world use
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/your-username/your-repo.git](https://github.com/Z4R0U4L/elite-track-playwright.git
+cd elite-track-playwright.git
 ```
 
 ### 2️⃣ Install dependencies
