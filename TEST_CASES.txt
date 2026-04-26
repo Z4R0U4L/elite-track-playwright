@@ -1,0 +1,526 @@
+===========================================
+TEST CASES REPORT - Delivery Management System
+===========================================
+
+Total Test Files: 5
+Total Test Cases: 36
+
+
+===========================================
+FILE: landingPageTest.spec.js (9 tests)
+===========================================
+
+Test Case 1: Test "Démarrer gratuitement →" button
+
+Steps:
+1. Go to landing page (http://localhost:3000/)
+2. Verify "Démarrer gratuitement →" button is visible
+3. Click the button
+
+Expected Result:
+User is redirected to registration page (http://localhost:3000/register)
+
+
+Test Case 2: Test "Se connecter" button
+
+Steps:
+1. Go to landing page (http://localhost:3000/)
+2. Verify "Se connecter" button is visible
+3. Click the button
+
+Expected Result:
+User is redirected to login page (http://localhost:3000/login)
+
+
+Test Case 3: Test "Connexion" button
+
+Steps:
+1. Go to landing page (http://localhost:3000/)
+2. Verify "Connexion" button is visible
+3. Click the button
+
+Expected Result:
+User is redirected to login page (http://localhost:3000/login)
+
+
+Test Case 4: Test "Commencer gratuitement" button
+
+Steps:
+1. Go to landing page (http://localhost:3000/)
+2. Verify "Commencer gratuitement" button is visible
+3. Click the button
+
+Expected Result:
+User is redirected to registration page (http://localhost:3000/register)
+
+
+Test Case 5: Test "Fonctionnalités" anchor link
+
+Steps:
+1. Go to landing page (http://localhost:3000/)
+2. Verify "Fonctionnalités" link is visible
+3. Click the link
+
+Expected Result:
+URL includes #features anchor
+
+
+Test Case 6: Test "Comment ça marche" anchor link
+
+Steps:
+1. Go to landing page (http://localhost:3000/)
+2. Verify "Comment ça marche" link is visible
+3. Click the link
+
+Expected Result:
+URL includes #how anchor
+
+
+Test Case 7: Test features are displayed
+
+Steps:
+1. Go to landing page (http://localhost:3000/)
+2. Click "Fonctionnalités" link
+3. Verify all feature texts are visible:
+   - "Carte GPS temps réel"
+   - "Gestion des commandes"
+   - "App livreur"
+   - "Notifications automatiques"
+   - "Lien de suivi client"
+   - "Tableau de bord"
+
+Expected Result:
+All feature descriptions are visible on the page
+
+
+Test Case 8: Test how it works section is displayed
+
+Steps:
+1. Go to landing page (http://localhost:3000/)
+2. Click "Comment ça marche" link
+3. Verify all step texts are visible:
+   - "Créez votre compte"
+   - "Créez une commande"
+   - "Suivez en temps réel"
+
+Expected Result:
+All how-it-works steps are visible on the page
+
+
+Test Case 9: Test that dashboard is not accessible from landing page
+
+Steps:
+1. Go to landing page (http://localhost:3000/)
+2. Verify Dashboard heading is not visible
+3. Navigate directly to dashboard URL (http://localhost:3000/dashboard)
+
+Expected Result:
+Dashboard heading remains hidden (user cannot access dashboard without login)
+
+
+===========================================
+FILE: loginTest.spec.js (2 tests)
+===========================================
+
+Test Case 10: Test login with invalid credentials
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Verify "Connexion" heading is visible
+3. Enter random fake email
+4. Enter random fake password
+5. Click "Se connecter" button
+
+Expected Result:
+Welcome message "Bienvenue, Noureddine Boss!" is NOT displayed
+
+
+Test Case 11: Test login with valid credentials
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Verify "Connexion" heading is visible
+3. Enter valid email: 'zakiilyass12@gmail.com'
+4. Enter valid password: 'zaroual123'
+5. Click "Se connecter" button
+
+Expected Result:
+Welcome message "Bienvenue, Noureddine Boss!" is displayed
+
+
+===========================================
+FILE: signUpTest.spec.js (9 tests)
+===========================================
+
+Test Case 12: Test sign up merchant
+
+Steps:
+1. Go to registration page (http://localhost:3000/register)
+2. Verify "Créer un compte" text is visible
+3. Verify role selection options are visible (merchant and driver)
+4. Click on merchant role
+5. Verify "Inscription" heading is visible
+6. Fill in name field
+7. Fill in phone number field
+8. Fill in email field with fake email
+9. Fill in password field
+10. Fill in confirm password field
+11. Click "Créer mon compte →" button
+
+Expected Result:
+User is redirected to dashboard (http://localhost:3000/dashboard)
+
+
+Test Case 13: Test sign up driver
+
+Steps:
+1. Go to registration page (http://localhost:3000/register)
+2. Verify "Créer un compte" text is visible
+3. Click on driver role
+4. Verify "Inscription" heading is visible
+5. Fill in name field with 'Test Driver'
+6. Fill in phone number field
+7. Fill in email field with fake email
+8. Fill in password field
+9. Fill in confirm password field
+10. Click "Créer mon compte →" button
+
+Expected Result:
+User is redirected to driver page (http://localhost:3000/driver) with "Mes livraisons" heading visible
+
+
+Test Case 14: Test sign up with existing email
+
+Steps:
+1. Go to registration page (http://localhost:3000/register)
+2. Click on merchant role
+3. Fill in all fields with existing email 'existing@example.com'
+4. Click "Créer mon compte →" button
+
+Expected Result:
+Dashboard heading is NOT displayed (registration fails)
+
+
+Test Case 15: Test sign up with mismatched passwords
+
+Steps:
+1. Go to registration page (http://localhost:3000/register)
+2. Click on merchant role
+3. Fill in all fields with passwords that don't match (Password123 vs Password321)
+4. Click "Créer mon compte →" button
+
+Expected Result:
+Error message "Les mots de passe ne correspondent pas" is displayed
+Dashboard heading is NOT displayed
+
+
+Test Case 16: Test sign up with invalid email format
+
+Steps:
+1. Go to registration page (http://localhost:3000/register)
+2. Click on merchant role
+3. Fill in all fields with invalid email format 'invalid-email'
+4. Click "Créer mon compte →" button
+
+Expected Result:
+Email field shows validation error (validity.valid = false)
+Dashboard heading is NOT displayed
+
+
+Test Case 17: Test sign up with short password
+
+Steps:
+1. Go to registration page (http://localhost:3000/register)
+2. Click on merchant role
+3. Fill in all fields with short password 'Pass' (less than 6 characters)
+4. Click "Créer mon compte →" button
+
+Expected Result:
+Error message "Mot de passe trop court" is displayed
+Dashboard heading is NOT displayed
+
+
+Test Case 18: Test sign up with empty fields
+
+Steps:
+1. Go to registration page (http://localhost:3000/register)
+2. Click on merchant role
+3. Click "Créer mon compte →" button without filling any fields
+
+Expected Result:
+Password field shows validation error (validity.valid = false)
+Email field shows validation error (validity.valid = false)
+Name field shows validation error (validity.valid = false)
+Dashboard heading is NOT displayed
+
+
+Test Case 19: Test login button in register page
+
+Steps:
+1. Go to registration page (http://localhost:3000/register)
+2. Click on merchant role
+3. Click "Se connecter" link
+
+Expected Result:
+User is redirected to login page (http://localhost:3000/login) with "Connexion" heading visible
+
+
+Test Case 20: Test back to home button in register page
+
+Steps:
+1. Go to registration page (http://localhost:3000/register)
+2. Click "← Retour à l'accueil" link
+
+Expected Result:
+User is redirected to landing page (http://localhost:3000/) with "Gérez vos livraisons" heading visible
+
+
+===========================================
+FILE: dashboardMerchant.spec.js (8 tests)
+===========================================
+
+Test Case 21: Access dashboard
+
+Steps:
+1. Go to registration page (http://localhost:3000/register)
+2. Register a new merchant with fake data (name: "test", phone: "1234567890", fake email, fake password)
+3. Wait for redirect
+
+Expected Result:
+User is redirected to dashboard (http://localhost:3000/dashboard)
+
+
+Test Case 22: Test switching between tabs
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with merchant credentials ('zakiilyass12@gmail.com', 'zaroual123')
+3. Verify "Dashboard" heading is visible
+4. Click "Commandes" button
+5. Verify "Commandes" heading is visible
+6. Click "Carte GPS" button
+7. Verify "Carte GPS — Livreurs en temps réel" heading is visible
+8. Click "Livreurs" button
+9. Verify "Livreurs" heading is visible
+10. Click "Dashboard" button
+
+Expected Result:
+All tabs navigate correctly and appropriate headings are displayed
+
+
+Test Case 23: Test creating a new order
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with merchant credentials
+3. Verify "Dashboard" heading is visible
+4. Click "+ Nouvelle commande" button
+5. Verify "Nouvelle commande" heading is visible
+6. Fill in client name, phone, email, address, and notes
+7. Click "Créer la commande" button
+8. Find the new order row using client name
+9. Verify order ID format (starts with CMD-)
+10. Verify client info is displayed correctly
+11. Verify address is displayed correctly
+12. Verify livreur field shows '—'
+13. Verify status shows 'En attente'
+
+Expected Result:
+New order is created with correct format, no assigned driver, and 'En attente' status
+
+
+Test Case 24: Test assigning a delivery person to an order
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with merchant credentials
+3. Verify "Dashboard" heading is visible
+4. Click "Commandes" tab
+5. Find an order with 'Assigner' button
+6. Extract the order ID
+7. Click the 'Assigner' button
+8. Verify assign dialog appears
+9. Click on livreur 'Noureddine zaroual'
+10. Verify the order row now shows assigned livreur name
+
+Expected Result:
+Order is assigned to delivery person and status shows 'Assignée'
+
+
+Test Case 25: Test canceling an order
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with merchant credentials
+3. Go to "Commandes" tab
+4. Click 'Annuler' button on an order
+5. Accept the confirmation dialog
+6. Check the status field
+
+Expected Result:
+Order status changes to 'Annulé'
+
+
+Test Case 26: Test status filtering
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with merchant credentials
+3. Go to "Commandes" tab
+4. Select 'En attente' from filter dropdown
+5. Check status of all visible rows
+
+Expected Result:
+All displayed orders have status 'En attente'
+
+
+Test Case 27: Test adding a new delivery person
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with merchant credentials
+3. Click "Livreurs" tab
+4. Verify "Livreurs" heading is visible
+5. Click "+ Ajouter livreur" button
+6. Verify "Ajouter un livreur" heading is visible
+7. Fill in name, email, phone, and password
+8. Click "Créer le livreur" button
+9. Verify redirect back to Livreurs page
+10. Verify new livreur name appears on page
+
+Expected Result:
+New delivery person is added and visible in the livreurs list
+
+
+Test Case 28: Test logout
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with merchant credentials
+3. Verify dashboard is accessible
+4. Click "Déconnexion" button
+
+Expected Result:
+User is redirected to login page (http://localhost:3000/login) with "Connexion" heading visible
+
+
+===========================================
+FILE: driverPage.spec.js (8 tests)
+===========================================
+
+Test Case 29: Test driver dashboard access
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with driver credentials ('achraf1111@gmail.com', '123456789')
+3. Wait for redirect
+
+Expected Result:
+User is redirected to driver page (http://localhost:3000/driver) with "Mes livraisons" heading visible
+
+
+Test Case 30: GPS toggle
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with driver credentials
+3. Verify "Mes livraisons" heading is visible
+4. Click GPS toggle button
+5. Verify GPS activated message
+6. Click GPS toggle button again
+
+Expected Result:
+GPS toggles on/off with appropriate status messages displayed
+
+
+Test Case 31: Test user info are displayed and log out
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with driver credentials
+3. Verify driver name 'Noureddine zaroual' is visible in header
+4. Click "Déconnexion" button
+
+Expected Result:
+Driver name is displayed in header, then user is redirected to login page
+
+
+Test Case 32: Test verifying orders are displayed correctly
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with driver credentials
+3. Verify orders list container is visible
+
+Expected Result:
+Orders list container is visible and contains at least one order card
+
+
+Test Case 33: Test every pending order has a "Démarrer la livraison" button
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with driver credentials
+3. Find all pending orders (with 'En attente' text)
+4. Check each pending order for a 'Démarrer' button
+
+Expected Result:
+Every pending order has a visible 'Démarrer' button
+
+
+Test Case 34: Test starting a delivery
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with driver credentials
+3. Find an order with status 'Assignée'
+4. Get the order ID
+5. Click the 'Démarrer' button
+6. Check the updated order status
+
+Expected Result:
+Order status changes to 'En cours', 'Démarrer' button is hidden, and 'Confirmer livraison' button appears
+
+
+Test Case 35: Test confirming a delivery
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with driver credentials
+3. Find an order with status 'En cours'
+4. Get the order ID
+5. Click 'Confirmer livraison' button
+6. Accept the confirmation dialog
+
+Expected Result:
+Confirmation message 'Livraison confirmée!' appears, and order no longer shows 'En cours' status
+
+
+Test Case 36: Test opening map button
+
+Steps:
+1. Go to login page (http://localhost:3000/login)
+2. Login with driver credentials
+3. Find an order with status 'Assignée'
+4. Click 'Voir sur Maps' link
+
+Expected Result:
+New popup window opens with Google Maps URL
+
+
+===========================================
+SUMMARY
+===========================================
+
+Total Test Cases: 36
+
+By Category:
+- Landing Page Tests: 9
+- Login Tests: 2
+- Sign Up Tests: 9
+- Merchant Dashboard Tests: 8
+- Driver Page Tests: 8
+
+===========================================
+END OF TEST CASES DOCUMENT
+===========================================
